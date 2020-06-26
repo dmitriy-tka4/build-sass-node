@@ -4,9 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "css-build": "node-sass ./src/styles/index.scss ./dist/styles/style.css",
+    "css-postcss": "postcss --use autoprefixer --output ./dist/styles/style.css ./dist/styles/style.css --no-map",
+    "css-deploy": "npm run css-build && npm run css-postcss",
+    "css-watch": "npm run css-build -- --watch",
+    "generate-styles-index": "node ./generate-styles-index.js"
   },
   "keywords": [],
   "author": "Dmitriy Tkach <dmitriy.tka4@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^9.6.1",
+    "node-sass": "^4.12.0",
+    "postcss-cli": "^6.1.3"
+  },
+  "dependencies": {
+    "minireset.css": "0.0.5"
+  }
 }
